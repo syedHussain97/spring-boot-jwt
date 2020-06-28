@@ -51,12 +51,15 @@ public class ProcessPageFunction implements Function<Page, Set<LocationWithDateA
         final ImmutableSet.Builder<LocationWithDateAndPrice> locationWithDateAndPriceBuilder =
                 new ImmutableSet.Builder<>();
 
+        final Map<Date, Double> dateValuesMap = new HashMap<>(0);
+
         while (rowItr.hasNext() && !linesComponentReached) {
             final Row row = rowItr.next();
             final Iterator<Cell> cellItr = row.iterator();
             Optional<String> locationId = Optional.empty();
             int rowNum = 0;
-            final Map<Date, Double> dateValuesMap = new HashMap<>(0);
+
+
             while (cellItr.hasNext()) {
                 final Cell cell = cellItr.next();
 
