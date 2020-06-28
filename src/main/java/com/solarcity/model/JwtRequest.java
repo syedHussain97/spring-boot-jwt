@@ -1,4 +1,4 @@
-package com.javainuse.model;
+package com.solarcity.model;
 
 import java.io.Serializable;
 
@@ -14,24 +14,24 @@ public class JwtRequest implements Serializable {
 
     }
 
-    public JwtRequest(String username, String password) {
-        this.setUsername(username);
-        this.setPassword(password);
+    public JwtRequest(final String username, final String password) {
+        this.username = username;
+        setPassword(password);
     }
 
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 }

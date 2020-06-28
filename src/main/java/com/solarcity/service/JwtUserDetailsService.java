@@ -1,8 +1,7 @@
-package com.javainuse.service;
+package com.solarcity.service;
 
-import com.javainuse.dao.UserDao;
-import com.javainuse.model.DAOUser;
-import com.javainuse.model.UserDTO;
+import com.solarcity.dao.UserRepository;
+import com.solarcity.model.DAOUser;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,19 +14,19 @@ import java.util.ArrayList;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
-    private final UserDao userDao;
+    private final UserRepository userRepository;
 
     private final PasswordEncoder bcryptEncoder;
 
-    public JwtUserDetailsService(final UserDao userDao,
+    public JwtUserDetailsService(final UserRepository userRepository,
                                  final PasswordEncoder bcryptEncoder) {
-        this.userDao = userDao;
+        this.userRepository = userRepository;
         this.bcryptEncoder = bcryptEncoder;
     }
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        final DAOUser user = userDao.findByUsername(username);
+        final DAOUser user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
@@ -35,10 +34,10 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>(0));
     }
 
-    public DAOUser save(final UserDTO user) {
+    public DAOUser save(final com.solarcity.model.User user) {
         final DAOUser newUser = new DAOUser();
-        newUser.setUsername(user.getUsername());
-        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        return userDao.save(newUser);
+        newUser.setUsername(user.username());
+        newUser.setPassword(bcryptEncoder.encode(user.password()));
+        return userRepository.save(newUser);
     }
 }

@@ -1,6 +1,6 @@
-package com.javainuse.config;
+package com.solarcity.config;
 
-import com.javainuse.service.JwtUserDetailsService;
+import com.solarcity.service.JwtUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +21,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     private final JwtTokenUtil jwtTokenUtil;
 
-    public JwtRequestFilter(final JwtUserDetailsService jwtUserDetailsService, final JwtTokenUtil jwtTokenUtil) {
+    public JwtRequestFilter(final JwtUserDetailsService jwtUserDetailsService,
+                            final JwtTokenUtil jwtTokenUtil) {
         this.jwtUserDetailsService = jwtUserDetailsService;
         this.jwtTokenUtil = jwtTokenUtil;
     }
@@ -52,7 +53,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         // Once we get the token validate it.
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (null != username && null == SecurityContextHolder.getContext().getAuthentication()) {
 
             final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(username);
 
@@ -60,8 +61,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             // authentication
             if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
 
-                final UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
+                final UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                        new UsernamePasswordAuthenticationToken(
+                                userDetails, null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 // After setting the Authentication in the context, we specify

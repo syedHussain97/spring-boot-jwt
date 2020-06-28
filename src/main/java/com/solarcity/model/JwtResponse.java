@@ -1,4 +1,4 @@
-package com.javainuse.model;
+package com.solarcity.model;
 
 import java.io.Serializable;
 

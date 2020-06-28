@@ -1,8 +1,10 @@
-package com.javainuse.config;
+package com.solarcity.config;
 
-import com.javainuse.service.JwtUserDetailsService;
+import com.solarcity.service.JwtUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -25,5 +27,8 @@ public class SecurityConfig {
         return new JwtTokenUtil();
     }
 
-
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
