@@ -1,11 +1,10 @@
-package com.solarcity.controller;
+package com.hussain.securewebcrawler.controller;
 
-import com.solarcity.config.JwtTokenUtil;
-import com.solarcity.model.JwtRequest;
-import com.solarcity.model.JwtResponse;
-import com.solarcity.model.User;
-import com.solarcity.model.UserType;
-import com.solarcity.service.JwtUserDetailsService;
+import com.hussain.securewebcrawler.model.JwtRequest;
+import com.hussain.securewebcrawler.model.User;
+import com.hussain.securewebcrawler.config.JwtTokenUtil;
+import com.hussain.securewebcrawler.model.JwtResponse;
+import com.hussain.securewebcrawler.service.JwtUserDetailsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

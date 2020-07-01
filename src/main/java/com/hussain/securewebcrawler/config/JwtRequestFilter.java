@@ -1,6 +1,6 @@
-package com.solarcity.config;
+package com.hussain.securewebcrawler.config;
 
-import com.solarcity.service.JwtUserDetailsService;
+import com.hussain.securewebcrawler.service.JwtUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

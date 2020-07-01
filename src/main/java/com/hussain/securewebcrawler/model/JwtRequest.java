@@ -1,4 +1,4 @@
-package com.solarcity.model;
+package com.hussain.securewebcrawler.model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.solarcity.crawler;
+package com.hussain.securewebcrawler.crawler;
 
 import com.google.common.collect.ImmutableSet;
 import edu.uci.ics.crawler4j.crawler.Page;
@@ -44,12 +44,12 @@ public class ProcessPageFunction implements Function<Page, Set<LocationWithDateA
         final Sheet sheet = workbook.getSheet(sheetName);
         final Iterator<Row> rowItr = sheet.iterator();
 
-        boolean linesComponentReached = false;
 
         final List<Date> dateSet = new ArrayList<>(0);
 
         final ImmutableSet.Builder<LocationWithDateAndPrice> locationWithDateAndPriceBuilder =
                 new ImmutableSet.Builder<>();
+        boolean linesComponentReached = false;
 
         final Map<Date, Double> dateValuesMap = new HashMap<>(0);
 
@@ -101,7 +101,7 @@ public class ProcessPageFunction implements Function<Page, Set<LocationWithDateA
 
         for (final LocationWithDateAndPriceType locationWithDateAndPriceType : locationWithDateAndPrices) {
 
-            LOGGER.debug(locationWithDateAndPriceType.locationId());
+            LOGGER.info(locationWithDateAndPriceType.locationId());
         }
         return locationWithDateAndPrices;
     }

@@ -1,7 +1,7 @@
-package com.solarcity.service;
+package com.hussain.securewebcrawler.service;
 
-import com.solarcity.dao.UserRepository;
-import com.solarcity.model.DAOUser;
+import com.hussain.securewebcrawler.dao.UserRepository;
+import com.hussain.securewebcrawler.model.DAOUser;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,7 +34,7 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>(0));
     }
 
-    public DAOUser save(final com.solarcity.model.User user) {
+    public DAOUser save(final com.hussain.securewebcrawler.model.User user) {
         final DAOUser newUser = new DAOUser();
         newUser.setUsername(user.username());
         newUser.setPassword(bcryptEncoder.encode(user.password()));

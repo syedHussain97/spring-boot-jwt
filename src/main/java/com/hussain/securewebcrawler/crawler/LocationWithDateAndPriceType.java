@@ -1,10 +1,9 @@
-package com.solarcity.crawler;
+package com.hussain.securewebcrawler.crawler;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.collect.ImmutableMap;
 import org.immutables.value.Value;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
@@ -16,9 +15,7 @@ import java.util.Date;
 @JsonDeserialize(as = LocationWithDateAndPrice.class)
 public interface LocationWithDateAndPriceType {
 
-    @NotNull
     String locationId();
 
-    @NotNull
     ImmutableMap<Date, Double> dateAndValueMap();
 }

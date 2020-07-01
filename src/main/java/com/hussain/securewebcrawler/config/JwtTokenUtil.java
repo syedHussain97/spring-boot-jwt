@@ -1,4 +1,4 @@
-package com.solarcity.config;
+package com.hussain.securewebcrawler.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

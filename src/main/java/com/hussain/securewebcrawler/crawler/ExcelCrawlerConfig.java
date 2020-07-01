@@ -1,4 +1,4 @@
-package com.solarcity.crawler;
+package com.hussain.securewebcrawler.crawler;
 
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
@@ -51,9 +51,13 @@ public class ExcelCrawlerConfig {
     @Bean
     ExcelSheetCrawler excelSheetCrawler(final Supplier<String> getCurrentQuarter,
                                         final Function<Page, Set<LocationWithDateAndPrice>> processPageFunction,
-                                        final @Value("${urltoparse}") String urlToVisit) {
+                                        final @Value("${urltoparse}") String urlToVisit,
+                                        final ProcessedDetailsCollector processedDetailsCollector) {
 
-        return new ExcelSheetCrawler(getCurrentQuarter, processPageFunction, urlToVisit);
+        return new ExcelSheetCrawler(getCurrentQuarter,
+                processPageFunction,
+                urlToVisit,
+                processedDetailsCollector::setLocationWithDateAndPrices);
     }
 
     @Bean
@@ -77,5 +81,10 @@ public class ExcelCrawlerConfig {
             final CrawlController crawlController) {
 
         return new CrawlControllerExecution(webCrawlerFactory, crawlController);
+    }
+
+    @Bean
+    ProcessedDetailsCollector processedDetailsCollector() {
+        return new ProcessedDetailsCollector();
     }
 }

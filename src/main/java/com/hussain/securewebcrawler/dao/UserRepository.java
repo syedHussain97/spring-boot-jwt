@@ -1,6 +1,6 @@
-package com.solarcity.dao;
+package com.hussain.securewebcrawler.dao;
 
-import com.solarcity.model.DAOUser;
+import com.hussain.securewebcrawler.model.DAOUser;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

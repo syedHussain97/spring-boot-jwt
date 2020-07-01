@@ -1,6 +1,6 @@
-package com.solarcity.config;
+package com.hussain.securewebcrawler.config;
 
-import com.solarcity.service.JwtUserDetailsService;
+import com.hussain.securewebcrawler.service.JwtUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

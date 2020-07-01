@@ -1,4 +1,4 @@
-package com.solarcity.crawler;
+package com.hussain.securewebcrawler.crawler;
 
 import java.util.Calendar;
 import java.util.function.Supplier;

@@ -1,4 +1,4 @@
-package com.solarcity.config;
+package com.hussain.securewebcrawler.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

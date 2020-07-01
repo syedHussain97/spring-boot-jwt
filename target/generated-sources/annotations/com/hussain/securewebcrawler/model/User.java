@@ -1,5 +1,9 @@
-package com.solarcity.model;
+package com.hussain.securewebcrawler.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.Var;
@@ -24,7 +28,7 @@ import org.immutables.value.Generated;
 @Generated(from = "UserType", generator = "Immutables")
 @SuppressWarnings({"all"})
 @ParametersAreNonnullByDefault
-@javax.annotation.processing.Generated("org.immutables.processor.ProxyProcessor")
+@javax.annotation.Generated("org.immutables.processor.ProxyProcessor")
 @Immutable
 @CheckReturnValue
 public final class User implements UserType {
@@ -44,6 +48,7 @@ public final class User implements UserType {
   /**
    * @return The value of the {@code username} attribute
    */
+  @JsonProperty("username")
   @Override
   public String username() {
     return username;
@@ -52,6 +57,7 @@ public final class User implements UserType {
   /**
    * @return The value of the {@code password} attribute
    */
+  @JsonProperty("password")
   @Override
   public String password() {
     return password;
@@ -120,6 +126,50 @@ public final class User implements UserType {
         .add("username", username)
         .add("password", password)
         .toString();
+  }
+
+  /**
+   * Utility type used to correctly read immutable object from JSON representation.
+   * @deprecated Do not use this type directly, it exists only for the <em>Jackson</em>-binding infrastructure
+   */
+  @Generated(from = "UserType", generator = "Immutables")
+  @Deprecated
+  @SuppressWarnings("Immutable")
+  @JsonDeserialize
+  @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
+  static final class Json implements UserType {
+    @Nullable String username;
+    @Nullable String password;
+    @JsonProperty("username")
+    public void setUsername(String username) {
+      this.username = username;
+    }
+    @JsonProperty("password")
+    public void setPassword(String password) {
+      this.password = password;
+    }
+    @Override
+    public String username() { throw new UnsupportedOperationException(); }
+    @Override
+    public String password() { throw new UnsupportedOperationException(); }
+  }
+
+  /**
+   * @param json A JSON-bindable data structure
+   * @return An immutable value type
+   * @deprecated Do not use this method directly, it exists only for the <em>Jackson</em>-binding infrastructure
+   */
+  @Deprecated
+  @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
+  static User fromJson(Json json) {
+    User.Builder builder = User.builder();
+    if (json.username != null) {
+      builder.username(json.username);
+    }
+    if (json.password != null) {
+      builder.password(json.password);
+    }
+    return builder.build();
   }
 
   /**
@@ -203,6 +253,7 @@ public final class User implements UserType {
      * @return {@code this} builder for use in a chained invocation
      */
     @CanIgnoreReturnValue 
+    @JsonProperty("username")
     public final Builder username(String username) {
       this.username = Objects.requireNonNull(username, "username");
       initBits &= ~INIT_BIT_USERNAME;
@@ -215,6 +266,7 @@ public final class User implements UserType {
      * @return {@code this} builder for use in a chained invocation
      */
     @CanIgnoreReturnValue 
+    @JsonProperty("password")
     public final Builder password(String password) {
       this.password = Objects.requireNonNull(password, "password");
       initBits &= ~INIT_BIT_PASSWORD;

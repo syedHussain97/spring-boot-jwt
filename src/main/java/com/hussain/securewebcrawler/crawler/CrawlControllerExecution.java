@@ -1,4 +1,4 @@
-package com.solarcity.crawler;
+package com.hussain.securewebcrawler.crawler;
 
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import org.jetbrains.annotations.NotNull;
